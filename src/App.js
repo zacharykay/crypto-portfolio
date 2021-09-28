@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import Invest from './pages/Invest';
+import Portfolio from './pages/Portfolio';
+import Error from './pages/Error';
+import Layout from './components/Layout';
+import AuthWrapper from './pages/AuthWrapper';
+import PrivateRoute from './pages/PrivateRoute';
+import PriceCharts from './pages/PriceCharts';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<AuthWrapper>
+			<Router>
+				<Switch>
+					<Layout>
+						<Route exact path="/">
+							<PriceCharts />
+						</Route>
+						<Route exact path="/invest">
+							<Invest />
+						</Route>
+						<PrivateRoute exact path="/portfolio">
+							<Portfolio />
+						</PrivateRoute>
+					</Layout>
+					<Route path="*">
+						<Error />
+					</Route>
+				</Switch>
+			</Router>
+		</AuthWrapper>
+	);
 }
 
 export default App;
