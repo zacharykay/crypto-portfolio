@@ -13,19 +13,23 @@ const NavLinks = () => {
 			<ul>
 				{!myUser && (
 					<li>
-						<NavLink exact activeClassName="nav-link-active" to="/">
+						<NavLink exact to={'/'} activeClassName="nav-link-active">
 							Markets&nbsp; <IoStatsChart />
 						</NavLink>
 					</li>
 				)}
 				<li>
-					<NavLink exact activeClassName="nav-link-active" to="/invest">
+					<NavLink exact to={'/invest'} activeClassName="nav-link-active">
 						Invest&nbsp; <GiTakeMyMoney />
 					</NavLink>
 				</li>
 				{myUser && (
 					<li>
-						<NavLink exact activeClassName="nav-link-active" to="/portfolio">
+						<NavLink
+							exact
+							to={'/portfolio'}
+							activeClassName="nav-link-active"
+						>
 							Portfolio&nbsp; <IoWallet />
 						</NavLink>
 					</li>

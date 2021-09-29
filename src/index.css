@@ -26,12 +26,6 @@
 	--image-backlight: 0 0 4pt 1pt var(--light-grey);
 }
 
-/* @media (max-width: 768px) {
-	:root {
-		--nav-font-size: 1.1rem;
-	}
-} */
-
 @media (max-width: 420px) {
 	:root {
 		--tab-width: 95vw;
