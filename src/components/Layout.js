@@ -9,14 +9,15 @@ const Layout = ({ children }) => {
 		<Wrapper>
 			<Navbar />
 			<div className="nav-spacer" />
-			<main>{children}</main>
+			<section>{children}</section>
 			<div className="footer-spacer" />
 			<FooterNav />
 		</Wrapper>
 	);
 };
 const Wrapper = styled.main`
-	main {
+	background-color: var(--light-black);
+	section {
 		background-color: var(--light-black);
 	}
 	.nav-spacer {

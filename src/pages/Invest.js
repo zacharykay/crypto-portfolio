@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { supportedCryptos as currencies } from '../utils/supportedCryptos';
 import FlipCard from '../components/FlipCard';
 import Loading from '../components/Loading';
+import { FaUserPlus } from 'react-icons/fa';
 
 import { dollarPrice } from '../utils/helperFunctions';
 
@@ -138,7 +139,7 @@ const Invest = () => {
 											type="button"
 											onClick={loginWithRedirect}
 										>
-											Login to Create Portfolio
+											Login to Create Portfolio <FaUserPlus />
 										</button>
 									</span>
 								)}
@@ -193,10 +194,14 @@ const Wrapper = styled.main`
 		margin-right: 1.5rem;
 	}
 	.inline-login {
+		font-size: 130%;
 		color: white;
 		background: transparent;
 		border-color: transparent;
 		cursor: pointer;
+		margin-top: -0.5rem;
+		margin-left: -0.5rem;
+		padding: 0.5rem;
 	}
 	.inline-login:hover {
 		color: var(--electric-blue);
