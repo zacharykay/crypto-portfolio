@@ -38,7 +38,7 @@ export const PortfolioProvider = ({ children }) => {
 
 	useEffect(
 		() => {
-			if (state.portfolioData !== {}) {
+			if (state.portfolioData) {
 				state.portfolioExists = true;
 			}
 		},
