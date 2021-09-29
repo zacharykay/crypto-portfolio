@@ -41,7 +41,7 @@ body {
 }
 
 ul > li > a.nav-link-active {
-	opacity: 80%;
+	opacity: .8;
 	color: var(--electric-blue);
 }
 

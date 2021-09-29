@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -13,7 +14,13 @@ import { usePortfolioContext } from '../context/portfolio_context';
 import { useUserContext } from '../context/user_context';
 
 const Invest = () => {
-	const { cryptoData, dataLoading, filteredData, filterCryptos } = useCryptoContext();
+	const {
+		cryptoData,
+		dataLoading,
+		filteredData,
+		filterCryptos,
+		creatingPortfolio
+	} = useCryptoContext();
 
 	const {
 		initialInvestment,
@@ -24,6 +31,8 @@ const Invest = () => {
 	} = usePortfolioContext();
 
 	const { loginWithRedirect, myUser } = useUserContext();
+
+	const history = useHistory();
 
 	const remainingAmount = parseInt(initialInvestment) - totalCryptoAmount;
 
@@ -111,7 +120,15 @@ const Invest = () => {
 							</h3>
 							<div className="create-portfolio-btn">
 								{myUser ? (
-									<button type="button" onClick={createPortfolio}>
+									<button
+										type="button"
+										onClick={(e) => {
+											createPortfolio(e);
+											if (!creatingPortfolio) {
+												history.push('/portfolio');
+											}
+										}}
+									>
 										Create Portfolio
 									</button>
 								) : (

@@ -1,4 +1,5 @@
 import { useUserContext } from '../context/user_context';
+import { usePortfolioContext } from '../context/portfolio_context';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -7,29 +8,27 @@ import { IoStatsChart, IoWallet } from 'react-icons/io5';
 
 const NavLinks = () => {
 	const { myUser } = useUserContext();
+	const { portfolioExists } = usePortfolioContext();
 
 	return (
 		<Wrapper>
 			<ul>
-				{!myUser && (
+				{(!portfolioExists || !myUser) && (
 					<li>
-						<NavLink exact to={'/'} activeClassName="nav-link-active">
+						<NavLink exact to="/" activeClassName="nav-link-active">
 							Markets&nbsp; <IoStatsChart />
 						</NavLink>
 					</li>
 				)}
 				<li>
-					<NavLink exact to={'/invest'} activeClassName="nav-link-active">
+					<NavLink exact to="/invest" activeClassName="nav-link-active">
 						Invest&nbsp; <GiTakeMyMoney />
 					</NavLink>
 				</li>
-				{myUser && (
+				{myUser &&
+				portfolioExists && (
 					<li>
-						<NavLink
-							exact
-							to={'/portfolio'}
-							activeClassName="nav-link-active"
-						>
+						<NavLink exact to="/portfolio" activeClassName="nav-link-active">
 							Portfolio&nbsp; <IoWallet />
 						</NavLink>
 					</li>

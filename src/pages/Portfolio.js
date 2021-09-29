@@ -118,7 +118,7 @@ const Wrapper = styled.section`
 
 	.investment-amount {
 		font-size: 1rem;
-		opacity: 80%;
+		opacity: .8;
 		margin: 3rem 0 0 0;
 	}
 

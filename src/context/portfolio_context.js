@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from 'react';
+import React, { useEffect, useContext, useReducer } from 'react';
 import reducer from '../reducers/portfolio_reducer';
 
 import { useCryptoContext } from '../context/crypto_context';
@@ -7,11 +7,12 @@ import { UPDATE_AMOUNT, UPDATE_INVESTMENT, PORTFOLIO_ERROR } from '../utils/acti
 
 import { objectifyArray } from '../utils/helperFunctions';
 import { supportedCryptos as currencies } from '../utils/supportedCryptos';
+// import { useEffect } from 'react/cjs/react.development';
 
 const getLocalStorage = () => {
-	let investmentData = localStorage.getItem('crypto-portfolio-investment');
+	let investmentData = localStorage.getItem(`crypto-portfolio-investment`);
 	if (investmentData) {
-		return JSON.parse(localStorage.getItem('crypto-portfolio-investment'));
+		return JSON.parse(localStorage.getItem(`crypto-portfolio-investment`));
 	} else {
 		return {};
 	}
@@ -24,7 +25,9 @@ const initialState = {
 	totalCryptoAmount: 0,
 	initialInvestment: 10000,
 	portfolioData: getLocalStorage(),
-	portfolioError: ''
+	portfolioError: '',
+	creatingPortfolio: false,
+	portfolioExists: false
 };
 
 const PortfolioContext = React.createContext();
@@ -33,6 +36,15 @@ export const PortfolioProvider = ({ children }) => {
 	const [ state, dispatch ] = useReducer(reducer, initialState);
 
 	const { priceData } = useCryptoContext();
+
+	useEffect(
+		() => {
+			if (state.portfolioData !== {}) {
+				state.portfolioExists = true;
+			}
+		},
+		[ state.portfolioData ]
+	);
 
 	const updateAmount = (price) => (e) => {
 		let id = e.target.name;
@@ -65,6 +77,7 @@ export const PortfolioProvider = ({ children }) => {
 
 	const createPortfolio = (e) => {
 		e.preventDefault();
+		state.creatingPortfolio = true;
 		const remainingAmount =
 			parseInt(state.initialInvestment) - parseInt(state.totalCryptoAmount);
 		if (remainingAmount !== 0) {
@@ -81,10 +94,13 @@ export const PortfolioProvider = ({ children }) => {
 			};
 
 			localStorage.setItem(
-				'crypto-portfolio-investment',
+				`crypto-portfolio-investment`,
 				JSON.stringify(portfolioValues)
 			);
 		}
+		state.portfolioData = getLocalStorage();
+		state.creatingPortfolio = false;
+		state.portfolioExists = true;
 	};
 
 	return (
