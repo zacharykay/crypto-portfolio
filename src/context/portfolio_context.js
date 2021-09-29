@@ -7,7 +7,6 @@ import { UPDATE_AMOUNT, UPDATE_INVESTMENT, PORTFOLIO_ERROR } from '../utils/acti
 
 import { objectifyArray } from '../utils/helperFunctions';
 import { supportedCryptos as currencies } from '../utils/supportedCryptos';
-// import { useEffect } from 'react/cjs/react.development';
 
 const getLocalStorage = () => {
 	let investmentData = localStorage.getItem(`crypto-portfolio-investment`);
@@ -43,6 +42,7 @@ export const PortfolioProvider = ({ children }) => {
 				state.portfolioExists = true;
 			}
 		},
+		//eslint-disable-next-line
 		[ state.portfolioData ]
 	);
 
