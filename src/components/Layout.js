@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
 	);
 };
 const Wrapper = styled.main`
-	background-color: var(--light-black);
+	background-color: var(--dark-black);
 	section {
 		background-color: var(--light-black);
 	}
