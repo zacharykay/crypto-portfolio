@@ -34,13 +34,10 @@ export const CryptoProvider = ({ children }) => {
 
 		try {
 			const cryptoResponse = await CoinGeckoClient.coins.markets();
-			// console.log('GECKO DATA', cryptoResponse.data);
 
 			dispatch({ type: FETCH_TICKER_DATA, payload: cryptoResponse.data });
 			dispatch({ type: GET_DATA_SUCCESS });
-		} catch (err) {
-			// console.log('TICKER ERROR', err);
-		}
+		} catch (err) {}
 	}, []);
 
 	const filterCryptos = useCallback(
