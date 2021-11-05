@@ -23,7 +23,11 @@ export const supportedCryptos = [
 	'internet-computer',
 	'aave',
 	'chiliz',
-	'amp-token'
+	'amp-token',
+	'theta-token',
+	'terra-luna',
+	'avalanche-2',
+	'axie-infinity'
 ];
 
 export const baseCurrency = 'usd';

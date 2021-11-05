@@ -207,6 +207,10 @@ const Wrapper = styled.main`
 		color: var(--electric-blue);
 	}
 
+	select:focus {
+		outline: none;
+	}
+
 	h2,
 	h3,
 	select {
