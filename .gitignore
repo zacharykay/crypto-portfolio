@@ -7,6 +7,7 @@
 
 # testing
 /coverage
+cypress.env.json
 
 # production
 /build
@@ -23,5 +24,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Old Files
 /src/classic
 /src/utils/cryptoFetch.js
+
+# 0auth Cypress Login
+/cypress/integration/login.js
