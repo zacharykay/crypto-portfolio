@@ -4,6 +4,10 @@
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.6.0",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.9",
+    "@types/react": "^17.0.36",
+    "@types/react-dom": "^17.0.11",
     "axios": "^0.21.1",
     "chart.js": "^3.5.0",
     "coingecko-api": "^1.0.10",
@@ -15,6 +19,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "styled-components": "^5.3.0",
+    "typescript": "^4.5.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

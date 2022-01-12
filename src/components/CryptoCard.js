@@ -23,6 +23,9 @@ const CryptoCard = ({
   if (id === "internet-computer") {
     currencyName = "Internet Comp";
   }
+  if (id === "basic-attention-token") {
+    currencyName = "BAT";
+  }
 
   const { portfolioData } = usePortfolioContext();
   const { prices, amounts } = portfolioData;

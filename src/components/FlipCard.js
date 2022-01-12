@@ -121,7 +121,7 @@ const Wrapper = styled.div`
   .front-card,
   .back-card {
     backface-visibility: hidden;
-    mix-blend-mode: multiply;
+    /* mix-blend-mode: multiply; */
     min-width: 275px;
     background: var(--dark-grey);
     border-radius: 12px;
